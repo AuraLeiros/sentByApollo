@@ -51,7 +51,7 @@ function App() {
     return (
     <div className="App">
       <header className="App-header">
-        <h1>Mood board of Mr. Julien Sopena</h1>
+        <h1>Patient Mood Board</h1>
         <ResponsiveContainer width="100%" height={400}>
           <ComposedChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />

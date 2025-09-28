@@ -1,28 +1,13 @@
-
 const express = require('express');
-const { MongoClient } = require('mongodb');
-
 const app = express();
+const http = require('http');
+
 const port = 3000;
 
-async function main() {
-	
-	const uri = 'mongodb://my-db:27017'
-	const client = new MongoClient(uri);
+/* Necessaire pour que le serveur soit accessible par plusieurs domaines */
+const cors = require('cors');
+app.use(cors());
 
-	try {
-		await client.connect()
-		console.log('Connected');
-	} catch (err) {
-		console.error("failed");
-	} finally {
-		await client.close();
-	}
-}
-
-main();
-
-
-
-
-
+const server = http.createServer(app);
+require('./websocket.js').init(server);
+server.listen(port);
